@@ -41,6 +41,7 @@ for (let c = 0; c < brickColumnCount; c++) {
   }
 }
 
+let score = 0;
 let isGameOver = false;
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -56,8 +57,14 @@ function draw() {
 
   bricks.forEach((brick) => {
     brick.draw(ctx);
-    brick.colides(ball);
+    if (brick.colides(ball)) {
+      score++;
+    }
   });
+
+  ctx.font = "16px Arial";
+  ctx.fillStyle = "#0095DD";
+  ctx.fillText("Score: " + score, 8, 20);
 
   if (!isGameOver) {
     window.requestAnimationFrame(draw);
