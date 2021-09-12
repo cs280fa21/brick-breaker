@@ -33,6 +33,8 @@ function draw() {
   paddle.draw(ctx);
   paddle.move(canvas.width);
 
+  ball.colides(paddle);
+  
   window.requestAnimationFrame(draw);
 }
 
